@@ -1,127 +1,227 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     display: flex;
-    flex-direction: column; /* 改为列布局 */
+    justify-content: center;
     align-items: center;
-    justify-content: flex-start; /* 让内容从顶部开始 */
     min-height: 100vh;
-    background-color: #f0f0f0;
-    padding-top: 20px; /* 添加顶部内边距 */
+    background-color: #f8f8f8;
     margin: 0;
 }
 
 .container {
+   display: grid;
+    grid-template-columns: 1fr;
+    /* 主要内容占满 */
+    grid-template-rows: auto auto auto auto auto auto;
+    /* 根据内容自动调整高度 */
+    gap: 20px;
+    /* 元素间距 */
+    width: 90%;
+    max-width: 400px;
+    /* 限制最大宽度 */
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+}
+
+#main-title {
+    grid-row: 1;
     text-align: center;
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
 }
 
-.title-circle-container{
-     display: flex;
-     flex-direction: column; /* 设置内部元素垂直排列 */
-     gap:1.5rem;
+.timer-section {
+    grid-row: 2;
+    display: flex;
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
 }
 
-.circle {
+#timer-circle {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background-color: #4CAF50;
+    background-color: hsl(140, 50%, 70%); /* 调整后的绿色 */
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    /* 垂直布局 */
     justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+    /* 与两侧按钮的间距 */
+    font-size: 1.2em;
+    color: #333;
+    cursor: pointer; /* 鼠标悬停时变为手型 */
+}
+
+#timer-circle:hover {
+    /* 鼠标悬停时，可以稍微改变背景色 */
+    background-color: #94d8c1;
+}
+
+.timer-text {
+    display: flex; /* 让"放松"和时间在一行 */
+    align-items: baseline; /*基线对齐*/
+    gap: 0.3em;/*间距*/
+}
+
+.timer-text #timeLeft{
+    font-size: 1.5em; /*时间字号*/
+}
+
+.sets-info {
+    margin-top: 5px;
+    font-size: 0.8em;/*组数小一点*/
+}
+
+.control-btn {
+    background-color: #b3d9ff; /* 浅蓝色 */
+    color: #333;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 16px;
+    font-size: 1em;
     cursor: pointer;
-    margin-bottom: 20px; /* 添加下边距 */
-    transition: background-color 0.3s ease;  /* 使背景颜色变化更平滑 */
+    height: fit-content; /*高度自适应*/
 }
 
-.circle:hover {
-    transform: scale(1.05); /*鼠标悬停放大效果*/
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*鼠标悬停时添加阴影*/
+.control-btn:disabled {
+    background-color: #eee;
+    cursor: not-allowed;
+    opacity: 0.7;
 }
 
-#circle-text {
-    color: white;
-    font-size: 20px;
+#startBtn{
+    display: none; /*隐藏开始按钮*/
 }
 
 .settings {
-    display: flex;
-    flex-direction: column;
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    margin-bottom: 20px;
-     width: 80%; /* 或者一个固定的最大宽度，例如 max-width: 300px; */
-    margin-left: auto;
-    margin-right: auto;
-}
+    margin-bottom: 10px;
 
-.settings > div {
-    display: flex;
-     justify-content: space-between; /* 两端对齐 */
-    align-items: center; /* 垂直居中 */
-    margin-bottom: 5px; /* 设置下方间距 */
-    padding: 0 10px;
 }
 
 .settings label {
-    margin-right: 10px;
-    width: 40%;
+    text-align: right;
+    padding-right: 5px;
+    color: #555;
 }
 
 .settings input[type="number"] {
-    width: 50px;
-    padding: 5px;
-    border: 1px solid #ddd;
+    width: 60px;
+    padding: 6px;
+    border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.checkin-button {
+#currentSet {
+    background-color: #f8f8f8;
+}
+
+
+
+#punchCardBtn {
+    grid-row: 4;
     background-color: #007bff;
     color: white;
-    padding: 10px 20px;
     border: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-.checkin-button:hover {
-    background-color: #0056b3; /*鼠标悬停改变颜色*/
+    margin: 0 auto;
 }
 
-#heatmap-container {
-    margin-top: 20px; /* 添加上边距 */
-    overflow-x: auto; /* 允许水平滚动 */
+#calendar {
+    grid-row: 5;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-#heatmap {
-    display: grid;
-    grid-template-columns: repeat(7, 20px); /* 7 列，每列 20px */
-    grid-template-rows: auto; /* 行高自动 */
-    gap: 4px; /* 单元格间距 */
-    padding: 10px;
+#calendar th,
+#calendar td {
     border: 1px solid #ddd;
-    background-color: white;
-    border-radius: 8px; /* 圆角 */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 阴影效果 */
-}
-
-.heatmap-header {
+    padding: 8px;
     text-align: center;
-    font-size: 0.8em; /* 稍微缩小字体 */
-    color: #888; /* 浅灰色 */
-    padding-bottom: 2px; /* 稍微增加下边距 */
+    width: 14.28%; /* 7列，大致均分 */
+    box-sizing: border-box; /* 防止padding撑大 */
 }
 
-.heatmap-cell {
-    width: 20px;
-    height: 20px;
-    background-color: #eee;
-    border: 1px solid #ddd;
+#calendar th {
+    background-color: #f0f0f0;
 }
 
-.heatmap-cell.today {
-    background-color: #fff5e6; /* 使用浅橙色表示今天 */
+#calendar td.today {
+    background-color: #fff9c4; /* 浅黄色，高亮今天 */
+}
+/* 预留的打卡样式, 暂时不启用 */
+#calendar td.need-punch {
+   /* background-color: #ffcdd2;  淡红色，需要打卡 */
+}
+#calendar td.punched {
+   /* background-color: #c8e6c9;  淡绿色，已打卡 */
 }
 
-.heatmap-cell.checked-in {
+#completed-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
     background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    display: none;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#completed-indicator.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/*收缩样式*/
+#timer-circle.shrinking {
+    background-color: hsl(0, 70%, 70%); /* 降低饱和度到 50% */
+}
+.tips {
+    grid-row: 6; /* 确保在最后一行 */
+  width: 100%; /* 确保宽度占满容器 */
+    margin-top: 20px;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    font-size: 0.9em;
+    line-height: 1.6;
+    color: #555;
+    background-color: #f9f9f9; /* 背景颜色 */
+    border-radius: 5px; /* 圆角 */
+  box-sizing: border-box; /* 确保padding不会使元素超出容器 */
+
+}
+.tips h3 {
+    margin: 0 0 10px; /* 标题的下边距 */
+    font-size: 1.2em; /* 标题字号 */
+    color: #333; /* 标题颜色 */
+}
+.tips ol {
+    padding-left: 20px; /* 列表的左边距 */
+}
+.tips ul {
+    padding-left: 20px; /* 子列表的左边距 */
 }

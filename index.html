@@ -1,51 +1,89 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>提肛运动助手</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
-       <div class="title-circle-container">
-        <text>提肛运动助手</text>
-            <div class="circle" id="start-circle">
-                <div id="circle-text">开始</div>
+        <h1 id="main-title">提肛运动助手</h1>
+        <div id="completed-indicator"></div>
+
+        <div class="timer-section">
+            <button id="resetBtn" class="control-btn">重置</button>
+            <div id="timer-circle">
+                <div class="timer-text">
+                    <span id="currentStage">开始</span> <span id="timeLeft"></span>
+                </div>
+
+                <div class="sets-info">
+                    (<span id="currentSetDisplay">1</span>/<span id="totalSetsDisplay">20</span>)
+                    , 第 <span id="currentCycleDisplay">1</span> 次  </div> <!-- 添加次数显示 -->
             </div>
+            <button id="pauseBtn" class="control-btn">暂停</button>
         </div>
 
         <div class="settings">
-            <div>
-                <label for="contract-time">收缩时间 (秒):</label>
-                <input type="number" id="contract-time">
-            </div>
-            <div>
-                <label for="relax-time">放松时间 (秒):</label>
-                <input type="number" id="relax-time">
-            </div>
-            <div>
-                <label for="repetitions">循环次数:</label>
-                <input type="number" id="repetitions">
-            </div>
-            <div>
-                <label for="daily-sets">每日组数:</label>
-                <input type="number" id="daily-sets">
-            </div>
-            <div>
-                <label for="current-sets">当前组数:</label>
-                <input type="number" id="current-sets" value="1">
-            </div>
+            <label for="shrinkTime">收缩时间 (秒):</label>
+            <input type="number" id="shrinkTime" value="3">
+
+            <label for="relaxTime">放松时间 (秒):</label>
+            <input type="number" id="relaxTime" value="5">
+
+            <label for="cycles">循环次数:</label>
+            <input type="number" id="cycles" value="10">
+
+            <label for="dailySets">每日组数:</label>
+            <input type="number" id="dailySets" value="2">
+
+            <label for="currentSet">当前组数:</label>
+            <input type="number" id="currentSet" value="1" readonly>
         </div>
 
-        <div class="checkin-section">
-            <button class="checkin-button" id="checkin-button">打卡</button>
-        </div>
+        <button id="startBtn" class="control-btn">开始</button>  <!--这个按钮可以删除-->
+        <button id="punchCardBtn">打卡</button>
+
+        <table id="calendar">
+            <!-- 日历内容将在 JavaScript 中生成 -->
+        </table>
+    </div>
+<div class="tips">
+        <h3>提肛运动怎么做？</h3>
+        <ol>
+            <li>
+                <strong>基础姿势</strong>（任选其一）：
+                <ul>
+                    <li><strong>站立</strong>：双腿自然分开，与肩同宽。</li>
+                    <li><strong>坐姿</strong>：挺直腰背，双脚平放地面。</li>
+                    <li><strong>平躺</strong>：屈膝，放松全身。</li>
+                </ul>
+            </li>
+            <li>
+                <strong>动作步骤</strong>：
+                <ul>
+                    <li><strong>收缩</strong>：缓慢收缩肛门和会阴部肌肉（类似憋尿或忍住放屁的感觉），保持 <strong>3-5秒</strong>。</li>
+                    <li><strong>放松</strong>：缓慢放松肌肉，休息 <strong>5-10秒</strong>。</li>
+                    <li><strong>循环</strong>：重复收缩-放松动作，建议每次做 <strong>10-15次</strong>，每天 <strong>2-3组</strong>。</li>
+                </ul>
+            </li>
+            <li>
+                <strong>注意事项</strong>：
+                <ul>
+                    <li>保持自然呼吸，不要憋气。</li>
+                    <li>避免腹部、大腿或臀部肌肉过度用力，专注盆底肌发力。</li>
+                    <li>初期可减少收缩时间（如2秒），逐渐增加强度。</li>
+                </ul>
+            </li>
+        </ol>
     </div>
 
-    <div id="heatmap-container">
-        <div id="heatmap"></div>
-    </div>
     <script src="script.js"></script>
 </body>
+
 </html>
+
+
