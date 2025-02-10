@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提肛运动助手</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+       <div class="title-circle-container">
+        <text>提肛运动助手</text>
+            <div class="circle" id="start-circle">
+                <div id="circle-text">开始</div>
+            </div>
+        </div>
+
+        <div class="settings">
+            <div>
+                <label for="contract-time">收缩时间 (秒):</label>
+                <input type="number" id="contract-time">
+            </div>
+            <div>
+                <label for="relax-time">放松时间 (秒):</label>
+                <input type="number" id="relax-time">
+            </div>
+            <div>
+                <label for="repetitions">循环次数:</label>
+                <input type="number" id="repetitions">
+            </div>
+            <div>
+                <label for="daily-sets">每日组数:</label>
+                <input type="number" id="daily-sets">
+            </div>
+            <div>
+                <label for="current-sets">当前组数:</label>
+                <input type="number" id="current-sets" value="1">
+            </div>
+        </div>
+
+        <div class="checkin-section">
+            <button class="checkin-button" id="checkin-button">打卡</button>
+        </div>
+    </div>
+
+    <div id="heatmap-container">
+        <div id="heatmap"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
